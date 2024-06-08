@@ -2,7 +2,7 @@ import React from 'react'
 
 const ImageUpload = () => {
   return (
-    <div>ImageUpload</div>
+    <div className='text-white'>ImageUpload</div>
   )
 }
 
