@@ -31,3 +31,37 @@ export const footerLinks = [
         title: "Developed By"
     }
 ]
+
+export const platforms = [
+    "Facebook",
+    "Instagram",
+    "Twitter",
+    "LinkedIn",
+    "Snapchat",
+    "TikTok",
+    "Reddit",
+    "YouTube",
+]
+
+export const moods = [
+    "Cheeky",
+    "Funny",
+    "Quirky",
+    "Sarcastic",
+    "Inspirational",
+    "Motivational",
+    "Cute",
+    "Romantic",
+    "Sassy",
+    "Elegant",
+    "Edgy",
+    "Thoughtful",
+    "Playful",
+    "Witty",
+    "Cool",
+    "Classy",
+    "Charming",
+    "Nostalgic",
+    "Exciting",
+    "Adventurous"
+];
