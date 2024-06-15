@@ -6,6 +6,7 @@ import upload from '../assets/upload.png'
 const ImageUpload = () => {
   const [platform, setPlatform] = useState("Instagram")
   const [mood, setMood] = useState("Funny")
+  const [imageUrl, setImageUrl] = useState(null)
   console.log(platform)
   console.log(mood)
 
@@ -50,17 +51,31 @@ const ImageUpload = () => {
     }
   }
 
+  const handleImageUpload = (e) => {
+    setImageUrl(null)
+    setCaptions([])
+    setHashtags([])
+    const file = e.target.files[0]
+    console.log("outside file")
+    if(file) {
+      console.log("inside file")
+      const newImageUrl = URL.createObjectURL(file)
+      setImageUrl(newImageUrl)
+    }
+  }
+
   return (
     <div>
       <form encType='multipart/form-data' onSubmit={handleSubmit(onSubmit)} 
       className='flex flex-col items-center justify-start sm:m-10 m-5'
       >
 
-        <div className='m-4'>
+        <div className='m-0'>
           <input 
           className='absolute cursor-pointer w-[64px] h-[64px] opacity-0'
           {...register('image', {
-            required: "Image is required"
+            required: "Image is required",
+            onChange: handleImageUpload
           })} type="file" accept='image/*' />
           <img 
           src={upload} 
@@ -110,18 +125,21 @@ const ImageUpload = () => {
         {errors.mood && <div className='text-red-500'>{errors.mood.message}</div>}
 
         <div className='m-4'>
-          <button type='submit' disabled={isSubmitting} className={`text-black bg-yellow-300 rounded-xl w-20 h-10 ${isSubmitting ? `animate-pulse` : `animate-none`}`}>
+          <button type='submit' disabled={isSubmitting} className={`text-black font-bold bg-yellow-300 rounded-xl w-20 h-10 ${isSubmitting && `animate-pulse`}`}>
             {isSubmitting? "Loading..." : "Submit"}
           </button>
         </div>
 
         {errors.root && <div className='text-red-500'>{errors.root.message}</div>}
       </form>
+
+      
       <div className='flex flex-col items-center'>
-        {captions.length>0 && <h1 className='text-yellow-300 font-bold'>Customized Captions</h1>}
+        {imageUrl && <img src={imageUrl} alt='Uploaded Image' className='w-64 h-64'/>}
+        {captions.length>0 && <h1 className='text-yellow-300 font-bold mt-8 mb-2'>Customized Captions</h1>}
         {captions.map((caption, index) => (
           <div>
-            <h1 className='text-white m-3 text-center mb-0'>- {caption}</h1> <br />
+            <h1 className='text-white m-3 text-center my-0 mx-9'>- {caption}</h1> <br />
           </div>
         ))}
         {captions.length>0 && <h1 className='text-yellow-300 font-bold'>Customized Hashtags</h1>}
