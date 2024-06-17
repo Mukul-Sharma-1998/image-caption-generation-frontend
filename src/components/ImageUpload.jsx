@@ -137,13 +137,13 @@ const ImageUpload = () => {
           {errors.root && <div className='text-red-500'>{errors.root.message}</div>}
         </form>
         <div className='sm:flex items-center sm:w-1/3 hidden'>
-          <h1 className='text-yellow-300 text-center font-bold p-4 text-[40px] opacity-50'>Take it <br/> to the next level <br/> with the help of <br/> AI</h1>
+          <h1 className='text-yellow-300 text-center font-bold p-4 text-[40px] opacity-50 shadow-black shadow-lg'>Take it <br/> to the next level <br/> with the help of <br/> AI</h1>
         </div>
       </div>
 
       
       <div className='flex flex-col items-center'>
-        {imageUrl && <img src={imageUrl} alt='Uploaded Image' className='w-64 h-64 m-5 rounded-lg'/>}
+        {imageUrl && <img src={imageUrl} alt='Uploaded Image' className='w-64 h-84 m-5 rounded-lg'/>}
         {captions.length>0 && <h1 className='text-yellow-300 font-bold mt-8 mb-2'>Customized Captions</h1>}
         {captions.map((caption, index) => (
           <div>
