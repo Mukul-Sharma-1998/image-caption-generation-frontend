@@ -1,12 +1,12 @@
 export const navLinks = [
-    {
-        id: "home",
-        title: "Home"
-    },
-    {
-        id: "products",
-        title: "Products"
-    },
+    // {
+    //     id: "home",
+    //     title: "Home"
+    // },
+    // {
+    //     id: "products",
+    //     title: "Products"
+    // },
     {
         id: "aboutUs",
         title: "About Us"
@@ -65,3 +65,14 @@ export const moods = [
     "Exciting",
     "Adventurous"
 ];
+
+export const rightPannelContent = [
+    "Boost your reach with expertly crafted hashtags!",
+    1000,
+    "Create compelling captions tailored to your content!",
+    1000,
+    "Maximize your visibility with the perfect blend of hashtags!",
+    1000,
+    "Craft customized captions that captivate your audience!",
+    1000
+]

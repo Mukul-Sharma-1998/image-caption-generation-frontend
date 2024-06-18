@@ -1,7 +1,8 @@
 import { React, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { platforms, moods } from '../constants'
+import { platforms, moods, rightPannelContent } from '../constants'
 import upload from '../assets/upload.png'
+import { TypeAnimation } from 'react-type-animation';
 
 const ImageUpload = () => {
   const [platform, setPlatform] = useState("Instagram")
@@ -68,7 +69,14 @@ const ImageUpload = () => {
     <div>
       <div className='sm:flex justify-evenly'>
         <div className='sm:flex items-center sm:w-1/3 hidden'>
-          <h1 className='text-yellow-300 text-center font-bold p-4 text-[40px] opacity-50'>Up your <br/> social media <br/> game!</h1>
+          {/* <h1 className='text-yellow-300 text-center font-bold p-4 text-[40px] opacity-50'>Up your <br/> social media <br/> game!</h1> */}
+          <TypeAnimation className='text-yellow-300 text-center font-bold p-4 text-[40px] opacity-50'
+            sequence={rightPannelContent}
+            wrapper="span"
+            speed={10}
+            style={{ display: 'inline-block' }}
+            repeat={Infinity}
+          />
         </div>
         <form encType='multipart/form-data' onSubmit={handleSubmit(onSubmit)} 
         className='flex flex-col items-center justify-start sm:m-10 m-5'
