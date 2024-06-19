@@ -8,8 +8,6 @@ const ImageUpload = () => {
   const [platform, setPlatform] = useState("Instagram")
   const [mood, setMood] = useState("Funny")
   const [imageUrl, setImageUrl] = useState(null)
-  console.log(platform)
-  console.log(mood)
 
   const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}?platform=${platform}&mood=${mood}`;
   
@@ -22,8 +20,6 @@ const ImageUpload = () => {
   
   const [captions, setCaptions] = useState([])
   const [hashtags, setHashtags] = useState([])
-  console.log(captions)
-  console.log(hashtags)
 
   const onSubmit = async (data) => {
     try {
@@ -57,9 +53,7 @@ const ImageUpload = () => {
     setCaptions([])
     setHashtags([])
     const file = e.target.files[0]
-    console.log("outside file")
     if(file) {
-      console.log("inside file")
       const newImageUrl = URL.createObjectURL(file)
       setImageUrl(newImageUrl)
     }
