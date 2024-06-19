@@ -4,7 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import { ImageUpload } from './components'
 import AboutUs from './components/AboutUs'
-import { Outlet, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 
 const router = createBrowserRouter(
   createRoutesFromElements(

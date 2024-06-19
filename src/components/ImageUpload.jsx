@@ -86,7 +86,15 @@ const ImageUpload = () => {
             <input 
             className='absolute cursor-pointer w-[64px] h-[64px] opacity-0'
             {...register('image', {
-              required: "Image is required",
+              required: "An image of less than 10MB is required!",
+              validate: {
+                sizeLimit: value => {
+                  if (value[0]?.size > 10 * 1024 * 1024) { // 10MB limit
+                    return 'File size exceeds the limit of 10MB';
+                  }
+                  return true;
+                }
+              },
               onChange: handleImageUpload
             })} type="file" accept='image/*' />
             <img 
@@ -152,17 +160,17 @@ const ImageUpload = () => {
       
       <div className='flex flex-col items-center'>
         {imageUrl && <img src={imageUrl} alt='Uploaded Image' className='w-64 h-84 m-5 rounded-lg'/>}
-        {captions.length>0 && <h1 className='text-yellow-300 font-bold mt-8 mb-2'>Customized Captions</h1>}
+        {captions.length>0 && <h1 className='text-yellow-300 font-bold mt-8 mb-2 text-lg'>Customized Captions</h1>}
         {captions.map((caption, index) => (
           <div>
-            <h1 className='text-white m-3 text-center my-0 mx-9'>- {caption}</h1> <br />
+            <h1 className='text-yellow-300 m-3 text-center my-0 mx-9 font-sans'>- {caption}</h1> <br />
           </div>
         ))}
-        {captions.length>0 && <h1 className='text-yellow-300 font-bold'>Customized Hashtags</h1>}
+        {captions.length>0 && <h1 className='text-yellow-300 font-bold text-lg'>Customized Hashtags</h1>}
         <div className='flex flex-wrap justify-center w-1/2'>
           {hashtags.map((hashtag, index) => (
             <div>
-              <h1 className='text-white'>{hashtag}</h1>
+              <h1 className='text-yellow-300 text-center font-sans'>{hashtag}</h1>
             </div>
           ))}
         </div>
