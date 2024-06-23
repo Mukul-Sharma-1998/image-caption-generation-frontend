@@ -15,10 +15,10 @@ const Footer = () => {
         
         <div>
             <ul className='m-4 flex flex-col justify-center items-center pr-0'>
-                <li key='heading' className='font-bold text-yellow-300'>Footer Heading</li>
+                <li key='heading' className='font-bold text-yellow-300'>About Maxted</li>
                 {footerLinks.map((foot, index) => (
                     <li key={foot.id}>
-                        <Link to={foot.id}>
+                        <Link className='underline' to={foot.id}>
                             {foot.title}
                         </Link>
                     </li>

@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { platforms, moods, rightPannelContent } from '../constants'
 import upload from '../assets/upload.png'
@@ -8,6 +8,7 @@ const ImageUpload = () => {
   const [platform, setPlatform] = useState("Instagram")
   const [mood, setMood] = useState("Funny")
   const [imageUrl, setImageUrl] = useState(null)
+  const captionRef = useRef(null)
 
   const url = `${import.meta.env.VITE_REACT_APP_BACKEND_URL}?platform=${platform}&mood=${mood}`;
   
@@ -20,6 +21,12 @@ const ImageUpload = () => {
   
   const [captions, setCaptions] = useState([])
   const [hashtags, setHashtags] = useState([])
+
+  useEffect(() => {
+    if(captions.length > 0) {
+      captionRef.current.scrollIntoView({ behavior: 'smooth'});
+    }
+  }, [captions])
 
   const onSubmit = async (data) => {
     try {
@@ -43,7 +50,7 @@ const ImageUpload = () => {
     }
     catch (error) {
       setError("root", {
-        message: "Something went worng, please try again in few minutes!"
+        message: "Please try with an image below 10MB"
       })
     }
   }
@@ -152,7 +159,7 @@ const ImageUpload = () => {
       </div>
 
       
-      <div className='flex flex-col items-center'>
+      <div className='flex flex-col items-center' ref={captionRef}>
         {imageUrl && <img src={imageUrl} alt='Uploaded Image' className='w-64 h-84 m-5 rounded-lg'/>}
         {captions.length>0 && <h1 className='text-yellow-300 font-bold mt-8 mb-2 text-lg'>Customized Captions</h1>}
         {captions.map((caption, index) => (

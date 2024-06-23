@@ -21,7 +21,6 @@ const AboutUs = () => {
           style={{ display: 'inline-block' }}
           repeat={3}
           omitDeletionAnimation={true}
-          preRenderFirstString={true}
         />
       </div>
       <div>
